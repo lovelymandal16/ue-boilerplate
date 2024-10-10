@@ -1,9 +1,5 @@
 mountpoints:
   /:
-<<<<<<< HEAD
     url:   https://gelding-sought-condor.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-form/main
-=======
-    url:   https://gelding-sought-condor.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-form/recaptcha
->>>>>>> 78c942380c53fecfa146e91bfb0d861da5aabd58
     type: "markup"
     suffix: ".html"

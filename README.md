@@ -2,8 +2,13 @@
 Your project's description...
 
 ## Environments
+<<<<<<< HEAD
 - Preview: https://main--ue-boilerplate--lovelymandal16.hlx.page/
 - Live: https://main--ue-boilerplate--lovelymandal16.hlx.live/
+=======
+- Preview: https://main--{repo}--{owner}.hlx.page/
+- Live: https://main--{repo}--{owner}.hlx.live/
+>>>>>>> upstream/main
 
 ## Installation
 
@@ -23,7 +28,11 @@ npm run lint
 1. Add the [AEM Code Sync GitHub App](https://github.com/apps/aem-code-sync) to the repository
 1. Install the [AEM CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/aem-cli`
 1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000`)
+<<<<<<< HEAD
 1. Open the `ue-boilerplate` directory in your favorite IDE and start coding :)
+=======
+1. Open the `{repo}` directory in your favorite IDE and start coding :)
+>>>>>>> upstream/main
 
 ## Prerequisites
 

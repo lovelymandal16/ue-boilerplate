@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+helix-importer-ui
+rollup/*
+>>>>>>> upstream/main
 blocks/form/rules/formula/*
 blocks/form/rules/model/*
 scripts/editor-support.js

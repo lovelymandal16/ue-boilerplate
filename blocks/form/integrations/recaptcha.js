@@ -56,7 +56,7 @@ export default class GoogleReCaptcha {
   }
 
   async getToken() {
-    if (!this.siteKey) {
+    if (!this.config.siteKey) {
       return null;
     }
     return new Promise((resolve) => {
@@ -70,7 +70,7 @@ export default class GoogleReCaptcha {
       }
       else{
         grecaptcha.ready(async () => {
-          const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+          const token = await grecaptcha.execute(this.config.siteKey, { action: 'submit' });
           resolve(token);
         });
       }

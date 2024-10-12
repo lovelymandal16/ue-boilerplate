@@ -2519,7 +2519,11 @@ class EventQueue {
     }
 }
 const request$1 = (url, data = null, options = {}) => {
-    const opts = { ...defaultRequestOptions, ...options };
+    const opts = { ...defaultRequestOptions, ...options , 
+        headers: {
+            'Authorization': 'Basic YWRtaW46YWRtaW4='
+          }
+    };
     const updatedUrl = opts.method === 'GET' && data ? convertQueryString(url, data) : url;
     if (opts.method !== 'GET') {
         opts.body = data;
@@ -2669,7 +2673,6 @@ const submit = async (context, success, error, submitAs = 'multipart/form-data',
     }
     await request(context, endpoint, 'POST', formData, success, error, {
         'Content-Type': submitContentType, 
-        'Authorization': 'Basic YWRtaW46YWRtaW4='
     });
 };
 const multipartFormData = (data, attachments) => {

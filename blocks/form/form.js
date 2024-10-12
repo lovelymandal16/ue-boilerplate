@@ -5,6 +5,7 @@ import {
   stripTags,
   checkValidation,
   toClassName,
+  createCaptchaWrapper
 } from './util.js';
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
@@ -337,7 +338,7 @@ function renderField(fd) {
     field.append(createHelpText(fd));
     field.dataset.description = fd.description; // In case overriden by error message
   }
-  if (fd.fieldType !== 'radio-group' && fd.fieldType !== 'checkbox-group') {
+  if (fd.fieldType !== 'radio-group' && fd.fieldType !== 'checkbox-group'  && fd.fieldType !== 'captcha') {
     inputDecorator(fd, field);
   }
   return field;
@@ -350,6 +351,8 @@ export async function generateFormRendition(panel, container, getItems = (p) => 
     const { fieldType } = field;
     if (fieldType === 'captcha') {
       captchaField = field;
+      const element = createCaptchaWrapper(field); 
+      return element;
     } else {
       const element = renderField(field);
       if (field.appliedCssClassNames) {
@@ -394,6 +397,17 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
+function getSitePageName(path) {
+  if(path == null) return "";
+  const index = path.lastIndexOf('/jcr:content');
+  if (index === -1) {
+    return "";
+  }
+  path = path.substring(0, index);
+  const pathArray = path.split('/');
+  return pathArray[pathArray.length - 1].replaceAll("-","_");
+}
+
 export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
   const form = document.createElement('form');
@@ -406,8 +420,10 @@ export async function createForm(formDef, data) {
 
   let captcha;
   if (captchaField) {
-    const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
-    captcha = new GoogleReCaptcha(siteKey, captchaField.id);
+    //const siteKey = captchaField?.properties?.['fd:captcha']?.config?.siteKey || captchaField?.value;
+    const config = captchaField?.properties?.['fd:captcha']?.config;
+    const page_name = getSitePageName(captchaField?.properties?.['fd:path']);
+    captcha = new GoogleReCaptcha(config,captchaField.id, captchaField.name, page_name);
     captcha.loadCaptcha(form);
   }
 

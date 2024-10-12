@@ -104,6 +104,20 @@ export function createFieldWrapper(fd, tagName = 'div', labelFn = createLabel) {
   return fieldWrapper;
 }
 
+export function createCaptchaWrapper(fd, tagName = 'div', labelFn = createLabel){
+  const fieldWrapper = document.createElement(tagName);
+  const nameStyle = fd.name ? ` field-${toClassName(fd.name)}` : '';
+  const renderType = getHTMLRenderType(fd);
+  const fieldId = `${renderType}-wrapper${nameStyle}`;
+  fieldWrapper.className = fieldId;
+  fieldWrapper.dataset.id = fd.id;
+  if (fd.visible === false) {
+    fieldWrapper.dataset.visible = fd.visible;
+  }
+  fieldWrapper.classList.add('field-wrapper');
+  return fieldWrapper;
+}
+
 export function createButton(fd) {
   const wrapper = createFieldWrapper(fd);
   if (fd.buttonType) {

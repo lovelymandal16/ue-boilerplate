@@ -1,13 +1,15 @@
 export default class GoogleReCaptcha {
   id;
-
-  siteKey;
-
+  name;
+  config;
+  formName;
   loadPromise;
 
   constructor(siteKey, id) {
-    this.siteKey = siteKey;
+    this.config = config;
+    this.name = name;
     this.id = id;
+    this.formName = formName;
   }
 
   #loadScript(url) {
@@ -25,17 +27,31 @@ export default class GoogleReCaptcha {
   }
 
   loadCaptcha(form) {
-    if (form && this.siteKey) {
+    if (form && this.config.siteKey) {
       const submit = form.querySelector('button[type="submit"]');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${this.siteKey}`);
+            const siteKey = this.config.siteKey;
+            const url = this.config.uri ;
+            if(this.config.version == 'enterprise')
+              this.#loadScript(url+'?render=' + siteKey);
+            else
+            this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${siteKey}`);
             obs.disconnect();
           }
         });
       });
+      if(submit==null){
+        console.error('Submit button is not defined');
+        alert('Submit button is not defined: To load CAPTCHA please add a submit button to the form.');
+      }
+      else
       obs.observe(submit);
+    }
+    else{
+      console.warn('Form or siteKey is not defined');
+      alert('Can not load captcha. Form or siteKey is not defined');
     }
   }
 
@@ -45,10 +61,19 @@ export default class GoogleReCaptcha {
     }
     return new Promise((resolve) => {
       const { grecaptcha } = window;
-      grecaptcha.ready(async () => {
-        const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
-        resolve(token);
-      });
+      if(this.config.version == 'enterprise'){
+        grecaptcha.enterprise.ready(async () => {
+          const submit_action = 'submit_'+this.formName+"_"+this.name;
+          const token = await grecaptcha.enterprise.execute(this.config.siteKey, {action: submit_action});
+          resolve(token);
+        });
+      }
+      else{
+        grecaptcha.ready(async () => {
+          const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+          resolve(token);
+        });
+      }
     });
   }
 }

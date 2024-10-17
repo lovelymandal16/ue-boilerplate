@@ -106,19 +106,21 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
 function annotateRecaptcha(captchaFieldWrapper, recaptchaDefinition) {
   captchaFieldWrapper.classList.toggle('captcha-wrapper', true);
   if (document.documentElement.classList.contains('adobe-ue-edit')){
-    const newFieldWrapper = captchaFieldWrapper.cloneNode(true);
-    newFieldWrapper.setAttribute('data-aue-type', 'component');
-    newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${recaptchaDefinition.properties['fd:path']}`);
-    newFieldWrapper.setAttribute('data-aue-model', 'recaptcha-v1');
-    newFieldWrapper.setAttribute('data-aue-label', recaptchaDefinition.label?.value || recaptchaDefinition.name);
-    newFieldWrapper.classList.add('edit-mode');
-    newFieldWrapper.replaceChildren();
-    captchaFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
-    generateCaptchaRendition(newFieldWrapper, recaptchaDefinition);
-  } else {
-    captchaFieldWrapper.replaceChildren();
-    generateCaptchaRendition(captchaFieldWrapper, recaptchaDefinition);
-  }
+    // const newFieldWrapper = captchaFieldWrapper.cloneNode(true);
+    // newFieldWrapper.setAttribute('data-aue-type', 'component');
+    // newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${recaptchaDefinition.properties['fd:path']}`);
+    // newFieldWrapper.setAttribute('data-aue-model', 'captcha');
+    // newFieldWrapper.setAttribute('data-aue-label', recaptchaDefinition.label?.value || recaptchaDefinition.name);
+    //newFieldWrapper.classList.add('edit-mode');
+    captchaFieldWrapper.classList.add('edit-mode');
+  //   newFieldWrapper.replaceChildren();
+  //   captchaFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
+  //   generateCaptchaRendition(newFieldWrapper, recaptchaDefinition);
+  generateCaptchaRendition(captchaFieldWrapper, recaptchaDefinition);
+  // } else {
+  //   captchaFieldWrapper.replaceChildren();
+  //   generateCaptchaRendition(captchaFieldWrapper, recaptchaDefinition);
+   }
 }
 
 function getPropertyModel(fd) {

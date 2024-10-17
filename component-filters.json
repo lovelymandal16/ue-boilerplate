@@ -65,7 +65,7 @@
       "text-input",
       "tnc",
       "wizard",
-      "recaptcha-v1"
+      "captcha"
     ]
   }
 ]

@@ -118,6 +118,17 @@ export function createCaptchaWrapper(fd, tagName = 'div', labelFn = createLabel)
   return fieldWrapper;
 }
 
+function getSitePageName(path) {
+  if(path == null) return "";
+  const index = path.lastIndexOf('/jcr:content');
+  if (index === -1) {
+    return "";
+  }
+  path = path.substring(0, index);
+  const pathArray = path.split('/');
+  return pathArray[pathArray.length - 1].replaceAll("-","_");
+}
+
 export function createButton(fd) {
   const wrapper = createFieldWrapper(fd);
   if (fd.buttonType) {

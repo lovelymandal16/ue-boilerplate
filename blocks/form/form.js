@@ -5,7 +5,8 @@ import {
   stripTags,
   checkValidation,
   toClassName,
-  createCaptchaWrapper
+  createCaptchaWrapper,
+  getSitePageName,
 } from './util.js';
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
@@ -395,17 +396,6 @@ async function createFormForAuthoring(formDef) {
     return [];
   });
   return form;
-}
-
-function getSitePageName(path) {
-  if(path == null) return "";
-  const index = path.lastIndexOf('/jcr:content');
-  if (index === -1) {
-    return "";
-  }
-  path = path.substring(0, index);
-  const pathArray = path.split('/');
-  return pathArray[pathArray.length - 1].replaceAll("-","_");
 }
 
 export async function createForm(formDef, data) {

@@ -107,11 +107,11 @@ function annotateRecaptcha(captchaFieldWrapper, recaptchaDefinition) {
   captchaFieldWrapper.classList.toggle('captcha-wrapper', true);
   if (document.documentElement.classList.contains('adobe-ue-edit')){
     // const newFieldWrapper = captchaFieldWrapper.cloneNode(true);
-    captchaFieldWrapper.replaceChildren();
-    captchaFieldWrapper.setAttribute('data-aue-type', 'component');
-    captchaFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${recaptchaDefinition.properties['fd:path']}`);
-    captchaFieldWrapper.setAttribute('data-aue-model', 'captcha');
-    captchaFieldWrapper.setAttribute('data-aue-label', recaptchaDefinition.label?.value || recaptchaDefinition.name);
+    // captchaFieldWrapper.replaceChildren();
+    // captchaFieldWrapper.setAttribute('data-aue-type', 'component');
+    // captchaFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${recaptchaDefinition.properties['fd:path']}`);
+     captchaFieldWrapper.setAttribute('data-aue-model', 'captcha');
+     captchaFieldWrapper.setAttribute('data-aue-label', recaptchaDefinition.label?.value || recaptchaDefinition.name);
     //newFieldWrapper.classList.add('edit-mode');
     captchaFieldWrapper.classList.add('edit-mode');
   //   newFieldWrapper.replaceChildren();

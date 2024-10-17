@@ -1,6 +1,2 @@
-
-
-
-  mountpoints:
-  /: https://drive.google.com/drive/u/0/folders/1SdRhSZ4jKUU1FMfwmXPd5WLmb56mtEd3
-    
+mountpoints:
+/: https://drive.google.com/drive/u/0/folders/1SdRhSZ4jKUU1FMfwmXPd5WLmb56mtEd3?ths=true

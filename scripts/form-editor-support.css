@@ -66,9 +66,9 @@
      position: relative;
  }
  
- /* :root.adobe-ue-edit .grecaptcha-badge {
+ :root.adobe-ue-edit .grecaptcha-badge {
      display: none !important;
- } */
+ }
  :root.adobe-ue-preview .grecaptcha-badge {
      display: block !important;
  }

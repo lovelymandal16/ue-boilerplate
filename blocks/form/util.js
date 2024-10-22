@@ -86,6 +86,20 @@ export function getHTMLRenderType(fd) {
   return fd?.fieldType?.replace('-input', '') ?? 'text';
 }
 
+export function createCaptchaWrapper(fd, tagName = 'div') {
+  const fieldWrapper = document.createElement(tagName);
+  const nameStyle = fd.name ? ` field-${toClassName(fd.name)}` : '';
+  const renderType = getHTMLRenderType(fd);
+  const fieldId = `${renderType}-wrapper${nameStyle}`;
+  fieldWrapper.className = fieldId;
+  fieldWrapper.dataset.id = fd.id;
+  if (fd.visible === false) {
+    fieldWrapper.dataset.visible = fd.visible;
+  }
+  fieldWrapper.classList.add('field-wrapper');
+  return fieldWrapper;
+}
+
 export function createFieldWrapper(fd, tagName = 'div', labelFn = createLabel) {
   const fieldWrapper = document.createElement(tagName);
   const nameStyle = fd.name ? ` field-${toClassName(fd.name)}` : '';
@@ -102,31 +116,6 @@ export function createFieldWrapper(fd, tagName = 'div', labelFn = createLabel) {
     if (label) { fieldWrapper.append(label); }
   }
   return fieldWrapper;
-}
-
-export function createCaptchaWrapper(fd, tagName = 'div', labelFn = createLabel){
-  const fieldWrapper = document.createElement(tagName);
-  const nameStyle = fd.name ? ` field-${toClassName(fd.name)}` : '';
-  const renderType = getHTMLRenderType(fd);
-  const fieldId = `${renderType}-wrapper${nameStyle}`;
-  fieldWrapper.className = fieldId;
-  fieldWrapper.dataset.id = fd.id;
-  if (fd.visible === false) {
-    fieldWrapper.dataset.visible = fd.visible;
-  }
-  fieldWrapper.classList.add('field-wrapper');
-  return fieldWrapper;
-}
-
-function getSitePageName(path) {
-  if(path == null) return "";
-  const index = path.lastIndexOf('/jcr:content');
-  if (index === -1) {
-    return "";
-  }
-  path = path.substring(0, index);
-  const pathArray = path.split('/');
-  return pathArray[pathArray.length - 1].replaceAll("-","_");
 }
 
 export function createButton(fd) {

@@ -63,14 +63,6 @@ export function handleWizardNavigation(wizardEl, navigateTo) {
   navigateToMenuItem.classList.add('wizard-menu-active-item');
 }
 
-function generateCaptchaRendition(captchaFieldWrapper, fragmentDefinition) {
-  const titleEl = document.createElement('div');
-  titleEl.classList.add('captcha-title');
-  titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
-  titleEl.id ="recaptcha-title";
-  captchaFieldWrapper.appendChild(titleEl);
-}
-
 function generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition) {
   const titleEl = document.createElement('div');
   titleEl.classList.add('fragment-title');
@@ -103,6 +95,15 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
     generateFragmentRendition(fragmentFieldWrapper, fragmentDefinition);
   }
 }
+
+function generateCaptchaRendition(captchaFieldWrapper, fragmentDefinition) {
+  const titleEl = document.createElement('div');
+  titleEl.classList.add('captcha-title');
+  titleEl.textContent = fragmentDefinition.label?.value || fragmentDefinition.name;
+  titleEl.id = 'recaptcha-title';
+  captchaFieldWrapper.appendChild(titleEl);
+}
+
 function annotateRecaptcha(captchaFieldWrapper, recaptchaDefinition) {
   captchaFieldWrapper.classList.toggle('captcha-wrapper', true);
   if (document.documentElement.classList.contains('adobe-ue-edit')) {
@@ -170,7 +171,7 @@ function annotateItems(items, formDefinition, formFieldMap) {
                 handleWizardNavigation(fieldWrapper.parentElement, fieldWrapper);
               }
             }
-          }else if (fd.fieldType === 'captcha') {
+          } else if (fd.fieldType === 'captcha') {
             annotateRecaptcha(fieldWrapper, fd);
           } else {
             fieldWrapper.setAttribute('data-aue-type', 'component');

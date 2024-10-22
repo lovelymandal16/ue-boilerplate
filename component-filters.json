@@ -44,6 +44,7 @@
   {
     "id": "form",
     "components": [
+      "captcha",
       "checkbox",
       "checkbox-group",
       "date-input",
@@ -64,8 +65,7 @@
       "telephone-input",
       "text-input",
       "tnc",
-      "wizard",
-      "captcha"
+      "wizard"
     ]
   }
 ]

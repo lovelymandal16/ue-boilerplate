@@ -105,7 +105,7 @@ function annotateFormFragment(fragmentFieldWrapper, fragmentDefinition) {
 }
 function annotateRecaptcha(captchaFieldWrapper, recaptchaDefinition) {
   captchaFieldWrapper.classList.toggle('captcha-wrapper', true);
-  if (document.documentElement.classList.contains('adobe-ue-edit')){
+  if (document.documentElement.classList.contains('adobe-ue-edit')) {
     const newFieldWrapper = captchaFieldWrapper.cloneNode(true);
     newFieldWrapper.setAttribute('data-aue-type', 'component');
     newFieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${recaptchaDefinition.properties['fd:path']}`);
@@ -115,6 +115,9 @@ function annotateRecaptcha(captchaFieldWrapper, recaptchaDefinition) {
     newFieldWrapper.replaceChildren();
     captchaFieldWrapper.insertAdjacentElement('afterend', newFieldWrapper);
     generateCaptchaRendition(newFieldWrapper, recaptchaDefinition);
+  } else {
+    captchaFieldWrapper.replaceChildren();
+    generateCaptchaRendition(captchaFieldWrapper, recaptchaDefinition);
   }
 }
 

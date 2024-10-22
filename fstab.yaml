@@ -1,6 +1,5 @@
-
-
-
-  mountpoints:
-  /: https://drive.google.com/drive/u/0/folders/1SdRhSZ4jKUU1FMfwmXPd5WLmb56mtEd3
-    
+mountpoints:
+  /:
+    url:   https://gelding-sought-condor.ngrok-free.app/bin/franklin.delivery/lovelymandal16/aem-boilerplate-form/main
+    type: "markup"
+    suffix: ".html"

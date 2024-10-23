@@ -413,8 +413,8 @@ export async function createForm(formDef, data) {
     if (!config) {
       config = {
         'siteKey' : captchaField?.value,
-        'uri' : '',
-        'version' : '',
+        'uri' : captchaField?.uri,
+        'version' : captchaField?.version,
       }
     }
     const pageName = getSitePageName(captchaField?.properties?.['fd:path']);

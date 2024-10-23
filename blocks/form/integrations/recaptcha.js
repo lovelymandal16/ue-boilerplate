@@ -39,11 +39,7 @@ export default class GoogleReCaptcha {
             const { siteKey } = this.config;
             const url = this.config.uri;
             if (this.config.version === 'enterprise') {
-              if (siteKey) {
-                this.#loadScript(`${url}?render=${siteKey}`);
-              } else {
-                this.#loadScript(`https://www.google.com/recaptcha/enterprise.js?render=${siteKey}`);
-              }
+              this.#loadScript(`${url}?render=${siteKey}`);
             } else {
               this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${siteKey}`);
             }

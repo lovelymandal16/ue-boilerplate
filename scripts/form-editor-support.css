@@ -74,8 +74,8 @@
  } 
  
  main .form form:not(.edit-mode) .captcha-wrapper{
-     display: none;
-     visibility: hidden ;
+     display: none !important;
+     visibility: hidden !important;
  } 
 
  main .form form.edit-mode .captcha-wrapper {

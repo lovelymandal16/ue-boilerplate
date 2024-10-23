@@ -6,6 +6,7 @@ import {
   checkValidation,
   toClassName,
   createCaptchaWrapper,
+  getSitePageName,
 } from './util.js';
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
@@ -395,17 +396,6 @@ async function createFormForAuthoring(formDef) {
   return form;
 }
 
-function getSitePageName(path) {
-  if (path == null) return '';
-  const index = path.lastIndexOf('/jcr:content');
-  if (index === -1) {
-    return '';
-  }
-  const mpath = path.substring(0, index);
-  const pathArray = mpath.split('/');
-  return pathArray[pathArray.length - 1].replaceAll('-', '_');
-}
-
 export async function createForm(formDef, data) {
   const { action: formPath } = formDef;
   const form = document.createElement('form');
@@ -419,6 +409,13 @@ export async function createForm(formDef, data) {
   let captcha;
   if (captchaField) {
     const config = captchaField?.properties?.['fd:captcha']?.config;
+    if (!config) {
+      config = {
+        'siteKey' : captchaField?.value,
+        'uri' : '',
+        'version' : '',
+      }
+    }
     const pageName = getSitePageName(captchaField?.properties?.['fd:path']);
     captcha = new GoogleReCaptcha(config, captchaField.id, captchaField.name, pageName);
     captcha.loadCaptcha(form);

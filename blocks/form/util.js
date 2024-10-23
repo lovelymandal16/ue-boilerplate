@@ -100,6 +100,17 @@ export function createCaptchaWrapper(fd, tagName = 'div') {
   return fieldWrapper;
 }
 
+export function getSitePageName(path) {
+  if (path == null) return '';
+  const index = path.lastIndexOf('/jcr:content');
+  if (index === -1) {
+    return '';
+  }
+  const mpath = path.substring(0, index);
+  const pathArray = mpath.split('/');
+  return pathArray[pathArray.length - 1].replaceAll('-', '_');
+}
+
 export function createFieldWrapper(fd, tagName = 'div', labelFn = createLabel) {
   const fieldWrapper = document.createElement(tagName);
   const nameStyle = fd.name ? ` field-${toClassName(fd.name)}` : '';

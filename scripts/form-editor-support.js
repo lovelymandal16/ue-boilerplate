@@ -171,8 +171,8 @@ function annotateItems(items, formDefinition, formFieldMap) {
                 handleWizardNavigation(fieldWrapper.parentElement, fieldWrapper);
               }
             }
-          } else if (fd.fieldType === 'captcha') {
-            annotateRecaptcha(fieldWrapper, fd);
+          // } else if (fd.fieldType === 'captcha') {
+          //   annotateRecaptcha(fieldWrapper, fd);
           } else {
             fieldWrapper.setAttribute('data-aue-type', 'component');
             fieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fd.properties['fd:path']}`);

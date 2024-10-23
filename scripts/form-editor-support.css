@@ -65,7 +65,7 @@
      display: inline-block;
      position: relative;
  }
- /*display: none !important;*/
+
  :root.adobe-ue-edit .grecaptcha-badge {
     visibility: hidden ;
  }
@@ -74,8 +74,7 @@
  } 
  
  main .form form:not(.edit-mode) .captcha-wrapper{
-     display: none !important;
-     visibility: hidden !important;
+     display: none ;
  } 
 
  main .form form.edit-mode .captcha-wrapper {

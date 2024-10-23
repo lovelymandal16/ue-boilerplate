@@ -73,15 +73,15 @@
      display: block !important;
  }
  
- main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
+ /* main .form form.edit-mode .captcha-wrapper:not(.edit-mode){
      display: none;
- }  
+ }   */
  
- main .form form:not(.edit-mode) .captcha-wrapper.edit-mode{
+ /* main .form form:not(.edit-mode) .captcha-wrapper.edit-mode{
      display: none;
- }
- 
- main .form form.edit-mode .captcha-wrapper.edit-mode{
+ } */
+ /*  .edit-mode{ */
+ main .form form.edit-mode .captcha-wrapper {
      border-width: 1px;
      padding: 15px;
      font-weight: normal;

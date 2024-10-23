@@ -93,6 +93,7 @@ export function createCaptchaWrapper(fd, tagName = 'div') {
   const fieldId = `${renderType}-wrapper${nameStyle}`;
   fieldWrapper.className = fieldId;
   fieldWrapper.dataset.id = fd.id;
+  fieldWrapper.textContent = fd.label?.value||fd.name;
   if (fd.visible === false) {
     fieldWrapper.dataset.visible = fd.visible;
   }

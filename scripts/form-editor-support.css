@@ -65,12 +65,12 @@
      display: inline-block;
      position: relative;
  }
- 
+ /*display: none !important;*/
  :root.adobe-ue-edit .grecaptcha-badge {
-     display: none ;
+    visibility: hidden ;
  }
  :root.adobe-ue-preview .grecaptcha-badge { 
-     display: block !important;
+     visibility: visible ;
  } 
  
  main .form form:not(.edit-mode) .captcha-wrapper{

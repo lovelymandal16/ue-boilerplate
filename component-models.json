@@ -2780,7 +2780,7 @@
   },
   {
     "id": "captcha",
-    "fields": 
+    "fields": [
       {
         "component": "container",
         "name": "basic",
@@ -2794,8 +2794,8 @@
             "valueType": "string",
             "required": true
           }
-        
       }
+    ]
     
   }
 ]

@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url:   https://gelding-sought-condor.ngrok-free.app/bin/franklin.delivery/lovelymandal16/ue-boilerplate/main
+    url:   https://rapid-dory-quickly.ngrok-free.app/bin/franklin.delivery/lovelymandal16/ue-boilerplate/main
     type: "markup"
     suffix: ".html"
 

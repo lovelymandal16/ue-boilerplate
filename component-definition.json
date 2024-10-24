@@ -211,7 +211,7 @@
           }
         },
         {
-          "title": "CAPTCHA",
+          "title": "Captcha (Invisible)",
           "id": "captcha",
           "plugins": {
             "xwalk": {
@@ -219,9 +219,7 @@
                 "resourceType": "core/fd/components/form/recaptcha/v1/recaptcha",
                 "template": {
                   "jcr:title": "CAPTCHA",
-                  "fieldType": "captcha",
-                  "enabled": true,
-                  "visible": true
+                  "fieldType": "captcha"
                 }
               }
             }

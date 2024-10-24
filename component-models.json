@@ -2780,13 +2780,13 @@
   },
   {
     "id": "captcha",
-    "fields": [
+    "fields": 
       {
         "component": "container",
         "name": "basic",
         "label": "Basic",
         "collapsible": false,
-        "fields": [
+        "fields": 
           {
             "component": "text",
             "name": "name",
@@ -2794,8 +2794,8 @@
             "valueType": "string",
             "required": true
           }
-        ]
+        
       }
-    ]
+    
   }
 ]

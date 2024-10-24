@@ -352,7 +352,7 @@ export async function generateFormRendition(panel, container, getItems = (p) => 
     if (fieldType === 'captcha') {
       captchaField = field;
       const element = createFieldWrapper(field);
-      element.textContent = field.label?.value||field.name;
+      element.textContent = 'CAPTCHA';
       return element;
     }
     const element = renderField(field);

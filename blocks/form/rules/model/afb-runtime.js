@@ -2673,9 +2673,9 @@ const submit = async (context, success, error, submitAs = 'multipart/form-data',
     }
     await request(context, endpoint, 'POST', formData, success, error, {
         'Content-Type': submitContentType, 
-        // 'headers': {
-        //     'Authorization': `Basic YWRtaW46YWRtaW4=`
-        // }
+        'headers': {
+            'Authorization': `Basic YWRtaW46YWRtaW4=`
+        }
     });
 };
 const multipartFormData = (data, attachments) => {

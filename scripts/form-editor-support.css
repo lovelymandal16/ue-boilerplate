@@ -73,10 +73,6 @@
      visibility: visible ;
  } 
  
- /* main .form form:not(.edit-mode) .captcha-wrapper{
-     display: none ;
- }  */
-
  main .form form.edit-mode .captcha-wrapper {
      border-width: 1px;
      padding: 15px;
